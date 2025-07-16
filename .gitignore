@@ -1,0 +1,16 @@
+# Node.js
+node_modules/
+dist/
+
+# TypeScript
+*.tsbuildinfo
+
+# VSCode
+.vscode/
+
+# テスト関連
+coverage/
+
+# OSファイル
+.DS_Store
+Thumbs.db

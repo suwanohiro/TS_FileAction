@@ -1,0 +1,44 @@
+{
+  "name": "swn-file-action",
+  "version": "1.0.0",
+  "description": "ファイル操作を簡単に行うTypeScriptユーティリティライブラリ",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "keywords": [
+    "file",
+    "io",
+    "utility",
+    "typescript",
+    "csv",
+    "read",
+    "write"
+  ],
+  "author": "suwanohiro",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.0.14",
+    "jest": "^30.0.4",
+    "ts-jest": "^29.4.0",
+    "typescript": "^5.8.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suwanohiro/TS_FileAction.git"
+  },
+  "bugs": {
+    "url": "https://github.com/suwanohiro/TS_FileAction/issues"
+  },
+  "homepage": "https://github.com/suwanohiro/TS_FileAction#readme",
+  "files": [
+    "dist"
+  ],
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  }
+}
