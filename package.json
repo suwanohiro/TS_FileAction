@@ -1,12 +1,13 @@
 {
   "name": "swn-file-action",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "ファイル操作を簡単に行うTypeScriptユーティリティライブラリ",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "prepublishOnly": "npm run build && npm test"
   },
   "keywords": [
     "file",
