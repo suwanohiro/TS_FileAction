@@ -39,6 +39,17 @@ export default class FileAction {
     }
 
     /**
+     * 型指定可能なJSONファイルの読み込み
+     * @param currentFilePath 相対パス
+     * @returns パース済みオブジェクト（型安全）
+     */
+    static ReadJSON<T>(currentFilePath: string): T {
+        const filePath = this.ConvertFileLink(currentFilePath);
+        const text = fs.readFileSync(filePath, { encoding: "utf-8" });
+        return JSON.parse(text) as T;
+    }
+
+    /**
      * テキストファイルに書き込む
      * @param currentFilePath 相対パス
      * @param writeString 書き込むテキストデータ
@@ -65,6 +76,18 @@ export default class FileAction {
      */
     static WriteNew(currentFilePath: string, writeString: string): void {
         this.Write(currentFilePath, writeString, "w");
+    }
+
+    /**
+     * 型指定可能なJSONファイルの書き込み
+     * @param currentFilePath 相対パス
+     * @param obj 保存するオブジェクト（型安全）
+     * @param space インデント（省略可）
+     */
+    static WriteJSON<T>(currentFilePath: string, obj: T, space?: number): void {
+        const filePath = this.ConvertFileLink(currentFilePath);
+        const json = JSON.stringify(obj, null, space ?? 2);
+        fs.writeFileSync(filePath, json, { encoding: "utf-8", flag: "w" });
     }
 
     /**

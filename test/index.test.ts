@@ -25,8 +25,25 @@ afterAll(() => {
         fs.rmdirSync(testDirPath, { recursive: true });
     }
 });
-
 describe("FileAction", () => {
+    const TEST_JSON = path.join(TEST_DIR, `${TEST_SUBDIR}/test.json`);
+    type TestType = { foo: string; bar: number };
+    const testObj: TestType = { foo: "hello", bar: 42 };
+
+    test("WriteJSON writes object as JSON", () => {
+        FileAction.WriteJSON<TestType>(TEST_JSON, testObj);
+        const raw = fs.readFileSync(TEST_JSON, { encoding: "utf-8" });
+        expect(raw).toContain('"foo":');
+        expect(raw).toContain('"bar":');
+    });
+
+    test("ReadJSON reads object with type", () => {
+        const obj = FileAction.ReadJSON<TestType>(TEST_JSON);
+        expect(obj).toEqual(testObj);
+        expect(typeof obj.foo).toBe("string");
+        expect(typeof obj.bar).toBe("number");
+    });
+
     test("Read returns file content", () => {
         expect(FileAction.Read(TEST_FILE)).toBe("Hello World");
     });
